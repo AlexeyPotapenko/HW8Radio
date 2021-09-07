@@ -8,6 +8,30 @@ class RadioTest {
 
 
     @Test
+    void setTotalStationNoDownMin() {
+        Radio rad = new Radio(15);
+
+        int expected = 15;
+
+        int actual = rad.getTotalStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void setTotalStationDownMin() {
+        Radio rad = new Radio(-5);
+
+
+        int expected = rad.getTotalStation();
+
+        int actual = rad.getTotalStation();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
     void aboveMaxSetNextStation() {
         Radio rad = new Radio();
 
@@ -38,8 +62,9 @@ class RadioTest {
     void shouldNotSetTempAboveMax() {
         Radio rad = new Radio();
 
-        int expected = rad.getCurrentStation();
         rad.setCurrentStation(rad.getMaxStation() + 10);
+
+        int expected = rad.getCurrentStation();
 
         int actual = rad.getCurrentStation();
 
@@ -51,8 +76,9 @@ class RadioTest {
     void shouldNotSetTempDownMin() {
         Radio rad = new Radio();
 
-        int expected = rad.getCurrentStation();
         rad.setCurrentStation(rad.getMinStation() - 10);
+
+        int expected = rad.getCurrentStation();
 
         int actual = rad.getCurrentStation();
 
@@ -88,12 +114,12 @@ class RadioTest {
 
     @Test
     void aboveMaxSetIncreaseVolume() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(100,0,100);
 
         rad.setCurrentVolume(rad.getMaxVolume());
 
         rad.setIncreaseVolume();
-        int expected = 10;
+        int expected = 100;
         int actual = rad.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -101,7 +127,7 @@ class RadioTest {
 
     @Test
     void NoAboveMaxSetIncreaseVolume() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(100,0,0);
 
         rad.setCurrentVolume(rad.getMinVolume());
 
@@ -114,7 +140,7 @@ class RadioTest {
 
     @Test
     void downMinSetDecreaseVolume() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(100,0,0);
 
         rad.setCurrentVolume(rad.getMinVolume());
 
@@ -127,12 +153,12 @@ class RadioTest {
 
     @Test
     void noDownMinSetDecreaseVolume() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(100,0,100);
 
         rad.setCurrentVolume(rad.getMaxVolume());
 
         rad.setDecreaseVolume();
-        int expected = 9;
+        int expected = 99;
         int actual = rad.getCurrentVolume();
 
         assertEquals(expected, actual);
