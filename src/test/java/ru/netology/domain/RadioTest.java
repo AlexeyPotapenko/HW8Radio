@@ -9,9 +9,9 @@ class RadioTest {
 
     @Test
     void setTotalStationNoDownMin() {
-        Radio rad = new Radio(15);
+        Radio rad = new Radio(50);
 
-        int expected = 15;
+        int expected = rad.getMaxStation() + 1;
 
         int actual = rad.getTotalStation();
 
