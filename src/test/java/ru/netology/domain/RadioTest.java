@@ -9,8 +9,9 @@ class RadioTest {
 
     @Test
     void setTotalStationNoDownMin() {
-        Radio rad = new Radio(50);
+        Radio rad = new Radio();
 
+        rad.setTotalStation(15);
         int expected = rad.getMaxStation() + 1;
 
         int actual = rad.getTotalStation();
@@ -20,10 +21,11 @@ class RadioTest {
 
     @Test
     void setTotalStationDownMin() {
-        Radio rad = new Radio(-5);
+        Radio rad = new Radio();
 
+        rad.setTotalStation(-5);
 
-        int expected = rad.getTotalStation();
+        int expected = 10;
 
         int actual = rad.getTotalStation();
 
@@ -64,9 +66,9 @@ class RadioTest {
 
         rad.setCurrentStation(rad.getMaxStation() + 10);
 
-        int expected = rad.getCurrentStation();
+        int expected = rad.getMaxStation();
 
-        int actual = rad.getCurrentStation();
+        int actual = rad.getTotalStation() - 1;
 
         assertEquals(expected, actual);
 
@@ -78,7 +80,7 @@ class RadioTest {
 
         rad.setCurrentStation(rad.getMinStation() - 10);
 
-        int expected = rad.getCurrentStation();
+        int expected = 0;
 
         int actual = rad.getCurrentStation();
 
@@ -114,7 +116,7 @@ class RadioTest {
 
     @Test
     void aboveMaxSetIncreaseVolume() {
-        Radio rad = new Radio(100,0,100);
+        Radio rad = new Radio(100, 0, 100);
 
         rad.setCurrentVolume(rad.getMaxVolume());
 
@@ -127,7 +129,7 @@ class RadioTest {
 
     @Test
     void NoAboveMaxSetIncreaseVolume() {
-        Radio rad = new Radio(100,0,0);
+        Radio rad = new Radio(100, 0, 0);
 
         rad.setCurrentVolume(rad.getMinVolume());
 
@@ -140,7 +142,7 @@ class RadioTest {
 
     @Test
     void downMinSetDecreaseVolume() {
-        Radio rad = new Radio(100,0,0);
+        Radio rad = new Radio(100, 0, 0);
 
         rad.setCurrentVolume(rad.getMinVolume());
 
@@ -153,7 +155,7 @@ class RadioTest {
 
     @Test
     void noDownMinSetDecreaseVolume() {
-        Radio rad = new Radio(100,0,100);
+        Radio rad = new Radio(100, 0, 100);
 
         rad.setCurrentVolume(rad.getMaxVolume());
 

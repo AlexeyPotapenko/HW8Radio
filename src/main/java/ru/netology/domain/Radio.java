@@ -10,9 +10,6 @@ public class Radio {
     public Radio() {
     }
 
-    public Radio(int totalStation) {
-        this.totalStation = totalStation;
-    }
 
 
     public int getTotalStation() {
@@ -33,6 +30,12 @@ public class Radio {
         return currentStation;
     }
 
+    public void setTotalStation(int totalStation) {
+        if (totalStation < 0){
+            return;
+        }
+        this.totalStation = totalStation;
+    }
 
     public void setCurrentStation(int currentStation) {
         if (currentStation < minStation) {
