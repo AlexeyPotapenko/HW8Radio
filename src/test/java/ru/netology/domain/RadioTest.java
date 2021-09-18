@@ -7,6 +7,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
 
+
+    @Test
+    void totalStationNoEmpty() {
+        Radio rad = new Radio(10);
+
+        int expected = 10;
+
+        int actual = rad.getTotalStation();
+
+        assertEquals(expected, actual);
+    }
+
+
     @Test
     void setTotalStationNoDownMin() {
         Radio rad = new Radio();
