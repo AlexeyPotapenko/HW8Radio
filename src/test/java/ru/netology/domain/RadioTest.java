@@ -6,13 +6,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
 
+    @Test
+    void totalStationEmpty() {
+        Radio rad = new Radio();
 
+
+        int expected = 10;
+
+        int actual = rad.getTotalStation();
+
+        assertEquals(expected, actual);
+    }
 
     @Test
     void totalStationNoEmpty() {
-        Radio rad = new Radio(10);
+        Radio rad = new Radio(50);
 
-        int expected = 10;
+        rad.setTotalStation(15);
+
+        int expected = 15;
 
         int actual = rad.getTotalStation();
 
@@ -129,7 +141,7 @@ class RadioTest {
 
     @Test
     void aboveMaxSetIncreaseVolume() {
-        Radio rad = new Radio(100, 0, 100);
+        Radio rad = new Radio();
 
         rad.setCurrentVolume(rad.getMaxVolume());
 
@@ -142,7 +154,7 @@ class RadioTest {
 
     @Test
     void NoAboveMaxSetIncreaseVolume() {
-        Radio rad = new Radio(100, 0, 0);
+        Radio rad = new Radio();
 
         rad.setCurrentVolume(rad.getMinVolume());
 
@@ -155,7 +167,7 @@ class RadioTest {
 
     @Test
     void downMinSetDecreaseVolume() {
-        Radio rad = new Radio(100, 0, 0);
+        Radio rad = new Radio();
 
         rad.setCurrentVolume(rad.getMinVolume());
 
@@ -168,7 +180,7 @@ class RadioTest {
 
     @Test
     void noDownMinSetDecreaseVolume() {
-        Radio rad = new Radio(100, 0, 100);
+        Radio rad = new Radio();
 
         rad.setCurrentVolume(rad.getMaxVolume());
 

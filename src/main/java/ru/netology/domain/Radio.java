@@ -41,6 +41,7 @@ public class Radio {
 
     public void setTotalStation(int totalStation) {
         if (totalStation < 0) {
+            this.totalStation = 10;
             return;
         }
         this.totalStation = totalStation;
@@ -77,11 +78,6 @@ public class Radio {
         return this.currentStation;
     }
 
-    public Radio(int maxVolume, int minVolume, int currentVolume) {
-        this.maxVolume = maxVolume;
-        this.minVolume = minVolume;
-        this.currentVolume = currentVolume;
-    }
 
     public int getMinVolume() {
 
