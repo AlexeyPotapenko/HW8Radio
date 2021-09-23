@@ -2,9 +2,12 @@ package ru.netology.domain;
 
 public class Radio {
     private int totalStation = 10;
-    private int maxStation;
-    private int minStation = 0;
+    private int maxStation = 9;
+    private int minStation;
     private int currentStation;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int currentVolume = minVolume;
 
 
     public Radio() {
@@ -16,10 +19,12 @@ public class Radio {
 
 
     public int getTotalStation() {
+
         return totalStation;
     }
 
     public int getMinStation() {
+
         return minStation;
     }
 
@@ -30,15 +35,23 @@ public class Radio {
     }
 
     public int getCurrentStation() {
+
         return currentStation;
     }
 
+    public void setTotalStation(int totalStation) {
+        if (totalStation < 0) {
+            this.totalStation = 10;
+            return;
+        }
+        this.totalStation = totalStation;
+    }
 
     public void setCurrentStation(int currentStation) {
         if (currentStation < minStation) {
             return;
         }
-        if (currentStation > maxStation) {
+        if (currentStation > getMaxStation()) {
             return;
         }
         this.currentStation = currentStation;
@@ -65,16 +78,6 @@ public class Radio {
         return this.currentStation;
     }
 
-
-    private int maxVolume = 100;
-    private int minVolume = 0;
-    private int currentVolume = minVolume;
-
-    public Radio(int maxVolume, int minVolume, int currentVolume) {
-        this.maxVolume = maxVolume;
-        this.minVolume = minVolume;
-        this.currentVolume = currentVolume;
-    }
 
     public int getMinVolume() {
 
