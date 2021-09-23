@@ -10,10 +10,10 @@ class RadioTest {
     void totalStationEmpty() {
         Radio rad = new Radio();
 
-        rad.setTotalStation(15);
+        rad.getMaxStation();
 
-        int expected = 14;
-        int actual = rad.getMaxStation();
+        int expected = 9;
+        int actual = rad.getTotalStation() - 1;
 
         assertEquals(expected, actual);
     }
