@@ -2,7 +2,7 @@ package ru.netology.domain;
 
 public class Radio {
     private int totalStation = 10;
-    private int maxStation;
+    private int maxStation = 9;
     private int minStation;
     private int currentStation;
     private int maxVolume = 100;
@@ -51,7 +51,7 @@ public class Radio {
         if (currentStation < minStation) {
             return;
         }
-        if (currentStation > maxStation) {
+        if (currentStation > getMaxStation()) {
             return;
         }
         this.currentStation = currentStation;

@@ -10,23 +10,22 @@ class RadioTest {
     void totalStationEmpty() {
         Radio rad = new Radio();
 
+        rad.setTotalStation(15);
 
-        int expected = 10;
-
-        int actual = rad.getTotalStation();
+        int expected = 14;
+        int actual = rad.getMaxStation();
 
         assertEquals(expected, actual);
     }
 
     @Test
     void totalStationNoEmpty() {
-        Radio rad = new Radio(50);
+        Radio rad = new Radio(20);
 
-        rad.setTotalStation(15);
+       rad.setCurrentStation(15);
 
         int expected = 15;
-
-        int actual = rad.getTotalStation();
+        int actual = rad.getCurrentStation();
 
         assertEquals(expected, actual);
     }
@@ -37,8 +36,8 @@ class RadioTest {
         Radio rad = new Radio();
 
         rad.setTotalStation(15);
-        int expected = rad.getMaxStation() + 1;
 
+        int expected = 15;
         int actual = rad.getTotalStation();
 
         assertEquals(expected, actual);
@@ -51,7 +50,6 @@ class RadioTest {
         rad.setTotalStation(-5);
 
         int expected = 10;
-
         int actual = rad.getTotalStation();
 
         assertEquals(expected, actual);
@@ -92,7 +90,6 @@ class RadioTest {
         rad.setCurrentStation(rad.getMaxStation() + 10);
 
         int expected = rad.getMaxStation();
-
         int actual = rad.getTotalStation() - 1;
 
         assertEquals(expected, actual);
@@ -106,7 +103,6 @@ class RadioTest {
         rad.setCurrentStation(rad.getMinStation() - 10);
 
         int expected = 0;
-
         int actual = rad.getCurrentStation();
 
         assertEquals(expected, actual);
